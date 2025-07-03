@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Catalog</title>
+    <link rel="stylesheet" href="Home.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="logo">
+          <span class="logo-icon">B</span>
+        </div>
+        <nav class="nav">
+          <a href="#" class="nav-link">Products</a>
+          <a href="#" class="nav-link">Solutions</a>
+          <a href="#" class="nav-link">Community</a>
+          <a href="#" class="nav-link">Resources</a>
+          <a href="#" class="nav-link">Pricing</a>
+          <a href="#" class="nav-link">Contact</a>
+          <a href="#" class="nav-link">Link</a>
+        </nav>
+        <div class="auth-buttons">
+          <button class="btn-secondary">Sign in</button>
+          <button class="btn-primary">Register</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="main-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="filter-section">
+          <h3>Keywords</h3>
+          <div class="search-container">
+            <input type="text" placeholder="Search" class="search-input" />
+            <button class="search-btn">🔍</button>
+          </div>
+
+          <div class="filter-tags">
+            <span class="tag">Spring ×</span>
+            <span class="tag">Smart ×</span>
+            <span class="tag">Modern ×</span>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <div class="filter-group">
+            <label class="checkbox-label">
+              <input type="checkbox" checked />
+              Label
+            </label>
+            <span class="filter-description">Description</span>
+          </div>
+
+          <div class="filter-group">
+            <label class="checkbox-label">
+              <input type="checkbox" checked />
+              Label
+            </label>
+            <span class="filter-description">Description</span>
+          </div>
+
+          <div class="filter-group">
+            <label class="checkbox-label">
+              <input type="checkbox" checked />
+              Label
+            </label>
+            <span class="filter-description">Description</span>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <h4>Label</h4>
+          <div class="price-range">
+            <div class="price-slider">
+              <input type="range" min="0" max="100" value="0" class="slider" />
+            </div>
+            <div class="price-values">
+              <span>$0</span>
+              <span>$100</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <h4>Color</h4>
+          <div class="color-options">
+            <div class="color-option selected"></div>
+            <div class="color-option"></div>
+            <div class="color-option"></div>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <h4>Size</h4>
+          <div class="size-options">
+            <label class="checkbox-label">
+              <input type="checkbox" checked />
+              Label
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" />
+              Label
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" />
+              Label
+            </label>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="content-header">
+          <div class="filter-controls">
+            <button class="filter-btn">✕ New</button>
+            <select class="sort-select">
+              <option>Price ascending</option>
+              <option>Price descending</option>
+              <option>Rating</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="product-grid">
+          <div class="product-card">
+            <div class="product-image"></div>
+            <div class="product-info">
+              <h3>Text</h3>
+              <p class="price">$0</p>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-image"></div>
+            <div class="product-info">
+              <h3>Text</h3>
+              <p class="price">$0</p>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-image"></div>
+            <div class="product-info">
+              <h3>Text</h3>
+              <p class="price">$0</p>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-image"></div>
+            <div class="product-info">
+              <h3>Text</h3>
+              <p class="price">$0</p>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-image"></div>
+            <div class="product-info">
+              <h3>Text</h3>
+              <p class="price">$0</p>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-image"></div>
+            <div class="product-info">
+              <h3>Text</h3>
+              <p class="price">$0</p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-logo">
+          <span class="logo-icon">B</span>
+        </div>
+        <div class="footer-content">
+          <div class="footer-column">
+            <h4>Use cases</h4>
+            <ul>
+              <li><a href="#">UI design</a></li>
+              <li><a href="#">UX design</a></li>
+              <li><a href="#">Wireframing</a></li>
+              <li><a href="#">Diagramming</a></li>
+              <li><a href="#">Brainstorming</a></li>
+              <li><a href="#">Online whiteboard</a></li>
+              <li><a href="#">Team collaboration</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Explore</h4>
+            <ul>
+              <li><a href="#">Design</a></li>
+              <li><a href="#">Prototyping</a></li>
+              <li><a href="#">Development features</a></li>
+              <li><a href="#">Design systems</a></li>
+              <li><a href="#">Collaboration features</a></li>
+              <li><a href="#">Design process</a></li>
+              <li><a href="#">FigJam</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Best practices</a></li>
+              <li><a href="#">Colors</a></li>
+              <li><a href="#">Color wheel</a></li>
+              <li><a href="#">Support</a></li>
+              <li><a href="#">Developers</a></li>
+              <li><a href="#">Resource library</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="social-links">
+          <a href="#" class="social-link">𝕏</a>
+          <a href="#" class="social-link">📷</a>
+          <a href="#" class="social-link">📘</a>
+          <a href="#" class="social-link">💼</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
