@@ -1,0 +1,226 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.header {
+    background-color: #2c2c2c;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+    .header::before {
+        content: "♦";
+        margin-right: 10px;
+        color: #8b7cc8;
+    }
+
+.cart-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.cart-table {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.table-header {
+    background-color: #6b8068;
+    color: white;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 50px 50px 1fr 120px 120px 120px;
+    gap: 20px;
+    align-items: center;
+    font-weight: bold;
+}
+
+.table-row {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 50px 50px 1fr 120px 120px 120px;
+    gap: 20px;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    background-color: #f9f9f9;
+}
+
+    .table-row:last-child {
+        border-bottom: none;
+    }
+
+.product-checkbox {
+    width: 18px;
+    height: 18px;
+    accent-color: #6b8068;
+    cursor: pointer;
+}
+
+.select-all-checkbox {
+    width: 18px;
+    height: 18px;
+    accent-color: #6b8068;
+    cursor: pointer;
+}
+
+.table-row.disabled {
+    opacity: 0.5;
+    background-color: #f5f5f5;
+}
+
+    .table-row.disabled .quantity-btn {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
+
+    .table-row.disabled .quantity-input {
+        background-color: #f5f5f5;
+        cursor: not-allowed;
+    }
+
+.product-cell {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.product-image {
+    width: 60px;
+    height: 60px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    background-image: repeating-linear-gradient( 45deg, #f0f0f0, #f0f0f0 10px, #e0e0e0 10px, #e0e0e0 20px );
+}
+
+    .product-image::after {
+        content: "📦";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 24px;
+        opacity: 0.7;
+    }
+
+.product-info h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.product-info p {
+    font-size: 14px;
+    color: #666;
+}
+
+.price, .quantity, .total {
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.quantity-btn {
+    background-color: #6b8068;
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .quantity-btn:hover {
+        background-color: #5a6e57;
+    }
+
+.quantity-input {
+    width: 50px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.cart-summary {
+    margin-top: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.summary-total {
+    border-top: 2px solid #6b8068;
+    padding-top: 10px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.checkout-btn {
+    background-color: #6b8068;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 100%;
+}
+
+    .checkout-btn:hover {
+        background-color: #5a6e57;
+    }
+
+.row-number {
+    text-align: center;
+    font-weight: bold;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .table-header, .table-row {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .product-cell {
+        justify-content: center;
+    }
+}

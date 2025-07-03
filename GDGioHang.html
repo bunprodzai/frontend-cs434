@@ -1,0 +1,474 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ Hàng</title>
+    <link rel="stylesheet" href="StyleSheet1.css">
+</head>
+<body>
+    <div class="header">
+        Giỏ Hàng
+    </div>
+
+    <div class="cart-container">
+        <div class="cart-table">
+            <div class="table-header">
+                <div>
+                    <input type="checkbox" class="select-all-checkbox" id="selectAll" onchange="toggleSelectAll()">
+                </div>
+                <div></div>
+                <div>Product</div>
+                <div>Price</div>
+                <div>Quantity</div>
+                <div>Total</div>
+            </div>
+
+            <div class="table-row" id="row1">
+                <div>
+                    <input type="checkbox" class="product-checkbox" id="check1" onchange="toggleProduct(1)" checked>
+                </div>
+                <div class="row-number">1</div>
+                <div class="product-cell">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>Tên sản phẩm:</h3>
+                        <p>Mô tả:</p>
+                    </div>
+                </div>
+                <div class="price">49</div>
+                <div class="quantity">
+                    <div class="quantity-control">
+                        <button class="quantity-btn" onclick="updateQuantity(1, -1)">-</button>
+                        <input type="number" class="quantity-input" id="qty1" value="2" min="1" onchange="updateTotal(1)">
+                        <button class="quantity-btn" onclick="updateQuantity(1, 1)">+</button>
+                    </div>
+                </div>
+                <div class="total" id="total1">98</div>
+            </div>
+
+            <div class="table-row" id="row2">
+                <div>
+                    <input type="checkbox" class="product-checkbox" id="check2" onchange="toggleProduct(2)" checked>
+                </div>
+                <div class="row-number">2</div>
+                <div class="product-cell">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>Tên sản phẩm:</h3>
+                        <p>Mô tả:</p>
+                    </div>
+                </div>
+                <div class="price">49</div>
+                <div class="quantity">
+                    <div class="quantity-control">
+                        <button class="quantity-btn" onclick="updateQuantity(2, -1)">-</button>
+                        <input type="number" class="quantity-input" id="qty2" value="2" min="1" onchange="updateTotal(2)">
+                        <button class="quantity-btn" onclick="updateQuantity(2, 1)">+</button>
+                    </div>
+                </div>
+                <div class="total" id="total2">98</div>
+            </div>
+
+            <div class="table-row" id="row3">
+                <div>
+                    <input type="checkbox" class="product-checkbox" id="check3" onchange="toggleProduct(3)" checked>
+                </div>
+                <div class="row-number">3</div>
+                <div class="product-cell">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>Tên sản phẩm:</h3>
+                        <p>Mô tả:</p>
+                    </div>
+                </div>
+                <div class="price">49</div>
+                <div class="quantity">
+                    <div class="quantity-control">
+                        <button class="quantity-btn" onclick="updateQuantity(3, -1)">-</button>
+                        <input type="number" class="quantity-input" id="qty3" value="2" min="1" onchange="updateTotal(3)">
+                        <button class="quantity-btn" onclick="updateQuantity(3, 1)">+</button>
+                    </div>
+                </div>
+                <div class="total" id="total3">98</div>
+            </div>
+
+            <div class="table-row" id="row4">
+                <div>
+                    <input type="checkbox" class="product-checkbox" id="check4" onchange="toggleProduct(4)" checked>
+                </div>
+                <div class="row-number">4</div>
+                <div class="product-cell">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>Tên sản phẩm:</h3>
+                        <p>Mô tả:</p>
+                    </div>
+                </div>
+                <div class="price">49</div>
+                <div class="quantity">
+                    <div class="quantity-control">
+                        <button class="quantity-btn" onclick="updateQuantity(4, -1)">-</button>
+                        <input type="number" class="quantity-input" id="qty4" value="2" min="1" onchange="updateTotal(4)">
+                        <button class="quantity-btn" onclick="updateQuantity(4, 1)">+</button>
+                    </div>
+                </div>
+                <div class="total" id="total4">98</div>
+            </div>
+        </div>
+
+        <div class="cart-summary">
+            <div class="summary-row">
+                <span>Tạm tính:</span>
+                <span id="subtotal">392</span>
+            </div>
+            <div class="summary-row">
+                <span>Phí vận chuyển:</span>
+                <span>30</span>
+            </div>
+            <div class="summary-row summary-total">
+                <span>Tổng cộng:</span>
+                <span id="grandTotal">422</span>
+            </div>
+            <button class="checkout-btn">Tiến hành thanh toán</button>
+        </div>
+    </div>
+
+    <script>
+        const price = 49;
+        const shippingFee = 30;
+
+        function updateQuantity(rowId, change) {
+            const checkbox = document.getElementById(`check${rowId}`);
+            if (!checkbox.checked) return;
+
+            const qtyInput = document.getElementById(`qty${rowId}`);
+            let currentQty = parseInt(qtyInput.value);
+            let newQty = currentQty + change;
+
+            if (newQty < 1) newQty = 1;
+
+            qtyInput.value = newQty;
+            updateTotal(rowId);
+        }
+
+        function updateTotal(rowId) {
+            const qtyInput = document.getElementById(`qty${rowId}`);
+            const totalElement = document.getElementById(`total${rowId}`);
+
+            const quantity = parseInt(qtyInput.value);
+            const total = price * quantity;
+
+            totalElement.textContent = total;
+            updateGrandTotal();
+        }
+
+        function toggleProduct(rowId) {
+            const checkbox = document.getElementById(`check${rowId}`);
+            const row = document.getElementById(`row${rowId}`);
+            const qtyInput = document.getElementById(`qty${rowId}`);
+            const buttons = row.querySelectorAll('.quantity-btn');
+
+            if (checkbox.checked) {
+                row.classList.remove('disabled');
+                qtyInput.disabled = false;
+                buttons.forEach(btn => btn.disabled = false);
+            } else {
+                row.classList.add('disabled');
+                qtyInput.disabled = true;
+                buttons.forEach(btn => btn.disabled = true);
+            }
+
+            updateGrandTotal();
+            updateSelectAllCheckbox();
+        }
+
+        function toggleSelectAll() {
+            const selectAllCheckbox = document.getElementById('selectAll');
+            const productCheckboxes = document.querySelectorAll('.product-checkbox');
+
+            productCheckboxes.forEach(checkbox => {
+                checkbox.checked = selectAllCheckbox.checked;
+                const rowId = checkbox.id.replace('check', '');
+                toggleProduct(rowId);
+            });
+        }
+
+        function updateSelectAllCheckbox() {
+            const selectAllCheckbox = document.getElementById('selectAll');
+            const productCheckboxes = document.querySelectorAll('.product-checkbox');
+            const checkedBoxes = document.querySelectorAll('.product-checkbox:checked');
+
+            if (checkedBoxes.length === 0) {
+                selectAllCheckbox.checked = false;
+                selectAllCheckbox.indeterminate = false;
+            } else if (checkedBoxes.length === productCheckboxes.length) {
+                selectAllCheckbox.checked = true;
+                selectAllCheckbox.indeterminate = false;
+            } else {
+                selectAllCheckbox.checked = false;
+                selectAllCheckbox.indeterminate = true;
+            }
+        }
+
+        function updateGrandTotal() {
+            let subtotal = 0;
+
+            for (let i = 1; i <= 4; i++) {
+                const checkbox = document.getElementById(`check${i}`);
+                if (checkbox.checked) {
+                    const totalElement = document.getElementById(`total${i}`);
+                    subtotal += parseInt(totalElement.textContent);
+                }
+            }
+
+            document.getElementById('subtotal').textContent = subtotal;
+            document.getElementById('grandTotal').textContent = subtotal + shippingFee;
+        }
+
+        // Khởi tạo tổng tiền khi trang load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateGrandTotal();
+            updateSelectAllCheckbox();
+        });
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ Hàng</title>
+    <link rel="stylesheet" href="StyleSheet1.css">
+</head>
+<body>
+    <div class="header">
+        Giỏ Hàng
+    </div>
+
+    <div class="cart-container">
+        <div class="cart-table">
+            <div class="table-header">
+                <div>
+                    <input type="checkbox" class="select-all-checkbox" id="selectAll" onchange="toggleSelectAll()">
+                </div>
+                <div></div>
+                <div>Product</div>
+                <div>Price</div>
+                <div>Quantity</div>
+                <div>Total</div>
+            </div>
+
+            <div class="table-row" id="row1">
+                <div>
+                    <input type="checkbox" class="product-checkbox" id="check1" onchange="toggleProduct(1)" checked>
+                </div>
+                <div class="row-number">1</div>
+                <div class="product-cell">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>Tên sản phẩm:</h3>
+                        <p>Mô tả:</p>
+                    </div>
+                </div>
+                <div class="price">49</div>
+                <div class="quantity">
+                    <div class="quantity-control">
+                        <button class="quantity-btn" onclick="updateQuantity(1, -1)">-</button>
+                        <input type="number" class="quantity-input" id="qty1" value="2" min="1" onchange="updateTotal(1)">
+                        <button class="quantity-btn" onclick="updateQuantity(1, 1)">+</button>
+                    </div>
+                </div>
+                <div class="total" id="total1">98</div>
+            </div>
+
+            <div class="table-row" id="row2">
+                <div>
+                    <input type="checkbox" class="product-checkbox" id="check2" onchange="toggleProduct(2)" checked>
+                </div>
+                <div class="row-number">2</div>
+                <div class="product-cell">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>Tên sản phẩm:</h3>
+                        <p>Mô tả:</p>
+                    </div>
+                </div>
+                <div class="price">49</div>
+                <div class="quantity">
+                    <div class="quantity-control">
+                        <button class="quantity-btn" onclick="updateQuantity(2, -1)">-</button>
+                        <input type="number" class="quantity-input" id="qty2" value="2" min="1" onchange="updateTotal(2)">
+                        <button class="quantity-btn" onclick="updateQuantity(2, 1)">+</button>
+                    </div>
+                </div>
+                <div class="total" id="total2">98</div>
+            </div>
+
+            <div class="table-row" id="row3">
+                <div>
+                    <input type="checkbox" class="product-checkbox" id="check3" onchange="toggleProduct(3)" checked>
+                </div>
+                <div class="row-number">3</div>
+                <div class="product-cell">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>Tên sản phẩm:</h3>
+                        <p>Mô tả:</p>
+                    </div>
+                </div>
+                <div class="price">49</div>
+                <div class="quantity">
+                    <div class="quantity-control">
+                        <button class="quantity-btn" onclick="updateQuantity(3, -1)">-</button>
+                        <input type="number" class="quantity-input" id="qty3" value="2" min="1" onchange="updateTotal(3)">
+                        <button class="quantity-btn" onclick="updateQuantity(3, 1)">+</button>
+                    </div>
+                </div>
+                <div class="total" id="total3">98</div>
+            </div>
+
+            <div class="table-row" id="row4">
+                <div>
+                    <input type="checkbox" class="product-checkbox" id="check4" onchange="toggleProduct(4)" checked>
+                </div>
+                <div class="row-number">4</div>
+                <div class="product-cell">
+                    <div class="product-image"></div>
+                    <div class="product-info">
+                        <h3>Tên sản phẩm:</h3>
+                        <p>Mô tả:</p>
+                    </div>
+                </div>
+                <div class="price">49</div>
+                <div class="quantity">
+                    <div class="quantity-control">
+                        <button class="quantity-btn" onclick="updateQuantity(4, -1)">-</button>
+                        <input type="number" class="quantity-input" id="qty4" value="2" min="1" onchange="updateTotal(4)">
+                        <button class="quantity-btn" onclick="updateQuantity(4, 1)">+</button>
+                    </div>
+                </div>
+                <div class="total" id="total4">98</div>
+            </div>
+        </div>
+
+        <div class="cart-summary">
+            <div class="summary-row">
+                <span>Tạm tính:</span>
+                <span id="subtotal">392</span>
+            </div>
+            <div class="summary-row">
+                <span>Phí vận chuyển:</span>
+                <span>30</span>
+            </div>
+            <div class="summary-row summary-total">
+                <span>Tổng cộng:</span>
+                <span id="grandTotal">422</span>
+            </div>
+            <button class="checkout-btn">Tiến hành thanh toán</button>
+        </div>
+    </div>
+
+    <script>
+        const price = 49;
+        const shippingFee = 30;
+
+        function updateQuantity(rowId, change) {
+            const checkbox = document.getElementById(`check${rowId}`);
+            if (!checkbox.checked) return;
+
+            const qtyInput = document.getElementById(`qty${rowId}`);
+            let currentQty = parseInt(qtyInput.value);
+            let newQty = currentQty + change;
+
+            if (newQty < 1) newQty = 1;
+
+            qtyInput.value = newQty;
+            updateTotal(rowId);
+        }
+
+        function updateTotal(rowId) {
+            const qtyInput = document.getElementById(`qty${rowId}`);
+            const totalElement = document.getElementById(`total${rowId}`);
+
+            const quantity = parseInt(qtyInput.value);
+            const total = price * quantity;
+
+            totalElement.textContent = total;
+            updateGrandTotal();
+        }
+
+        function toggleProduct(rowId) {
+            const checkbox = document.getElementById(`check${rowId}`);
+            const row = document.getElementById(`row${rowId}`);
+            const qtyInput = document.getElementById(`qty${rowId}`);
+            const buttons = row.querySelectorAll('.quantity-btn');
+
+            if (checkbox.checked) {
+                row.classList.remove('disabled');
+                qtyInput.disabled = false;
+                buttons.forEach(btn => btn.disabled = false);
+            } else {
+                row.classList.add('disabled');
+                qtyInput.disabled = true;
+                buttons.forEach(btn => btn.disabled = true);
+            }
+
+            updateGrandTotal();
+            updateSelectAllCheckbox();
+        }
+
+        function toggleSelectAll() {
+            const selectAllCheckbox = document.getElementById('selectAll');
+            const productCheckboxes = document.querySelectorAll('.product-checkbox');
+
+            productCheckboxes.forEach(checkbox => {
+                checkbox.checked = selectAllCheckbox.checked;
+                const rowId = checkbox.id.replace('check', '');
+                toggleProduct(rowId);
+            });
+        }
+
+        function updateSelectAllCheckbox() {
+            const selectAllCheckbox = document.getElementById('selectAll');
+            const productCheckboxes = document.querySelectorAll('.product-checkbox');
+            const checkedBoxes = document.querySelectorAll('.product-checkbox:checked');
+
+            if (checkedBoxes.length === 0) {
+                selectAllCheckbox.checked = false;
+                selectAllCheckbox.indeterminate = false;
+            } else if (checkedBoxes.length === productCheckboxes.length) {
+                selectAllCheckbox.checked = true;
+                selectAllCheckbox.indeterminate = false;
+            } else {
+                selectAllCheckbox.checked = false;
+                selectAllCheckbox.indeterminate = true;
+            }
+        }
+
+        function updateGrandTotal() {
+            let subtotal = 0;
+
+            for (let i = 1; i <= 4; i++) {
+                const checkbox = document.getElementById(`check${i}`);
+                if (checkbox.checked) {
+                    const totalElement = document.getElementById(`total${i}`);
+                    subtotal += parseInt(totalElement.textContent);
+                }
+            }
+
+            document.getElementById('subtotal').textContent = subtotal;
+            document.getElementById('grandTotal').textContent = subtotal + shippingFee;
+        }
+
+        // Khởi tạo tổng tiền khi trang load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateGrandTotal();
+            updateSelectAllCheckbox();
+        });
+    </script>
+</body>
+</html>
+
