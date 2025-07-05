@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Checkout Page</title>
+  <link rel="stylesheet" href="OderPage.css">
+</head>
+<body>
+  <!-- Header -->  
+  <header class="header">
+      <div class="container">
+        <div class="logo">
+          <span class="logo-icon">B</span>
+        </div>
+        <nav class="nav">
+          <a href="#" class="nav-link">Products</a>
+          <a href="#" class="nav-link">Solutions</a>
+          <a href="#" class="nav-link">Community</a>
+          <a href="#" class="nav-link">Resources</a>
+          <a href="#" class="nav-link">Pricing</a>
+          <a href="#" class="nav-link">Contact</a>
+          <a href="#" class="nav-link">Link</a>
+        </nav>
+        <div class="auth-buttons">
+          <button class="btn-secondary">Sign in</button>
+          <button class="btn-primary">Register</button>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Checkout Section -->
+    <main class="checkout-container">
+    <section class="cart-section">
+        <h2>Your cart</h2>
+
+        <div class="cart-item">
+        <div class="product-thumbnail"></div>
+        <div class="cart-info">
+            <p class="product-title">Product name</p>
+            <p>Color: <span class="color-box"></span></p>
+            <p>Size: Large</p>
+        </div>
+        <div class="quantity">
+            <button>-</button>
+            <span>1</span>
+            <button>+</button>
+        </div>
+        <div class="price">$49.00</div>
+        </div>
+
+        <div class="cart-item">
+        <div class="product-thumbnail"></div>
+        <div class="cart-info">
+            <p class="product-title">Product name</p>
+            <p>Color: <span class="color-box"></span></p>
+            <p>Size: Medium</p>
+        </div>
+        <div class="quantity">
+            <button>-</button>
+            <span>1</span>
+            <button>+</button>
+        </div>
+        <div class="price">$28.00</div>
+        </div>
+
+        <div class="cart-summary">
+        <p>Subtotal: <strong>$77.00</strong></p>
+        <div class="discount">
+            <input type="text" placeholder="Discount code">
+            <button class="btn-secondary">Apply</button>
+        </div>
+        <p>Total: <strong>$77.00</strong></p>
+        </div>
+    </section>
+
+    <section class="checkout-form">
+        <h2>Checkout</h2>
+        <input type="text" placeholder="Name">
+        <input type="text" placeholder="Phone">
+        <textarea placeholder="Address"></textarea>
+
+        <h3>Payment</h3>
+        <div class="form-option">
+            <label>
+                <input type="radio" name="payment" value="cod">
+                Cash on delivery
+            </label>
+        </div>
+
+        <div class="form-option">
+            <label>
+                <input type="radio" name="payment" value="bank">
+                Bank transfer
+            </label>
+        </div>
+
+        <div class="form-option">
+            <label>
+                <input type="radio" name="payment" value="momo">
+                Momo
+            </label>
+        </div>
+
+        <div class="form-option">
+            <label>
+                <input type="checkbox" id="saveinfo">
+                Save this information for next time
+            </label>
+        </div>
+
+        <button class="btn-primary full-width">Place order</button>
+        <p class="total-checkout">Total: <strong>$77.00</strong></p>
+    </section>
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-logo">
+          <span class="logo-icon">B</span>
+        </div>
+        <div class="footer-content">
+          <div class="footer-column">
+            <h4>Use cases</h4>
+            <ul>
+              <li><a href="#">UI design</a></li>
+              <li><a href="#">UX design</a></li>
+              <li><a href="#">Wireframing</a></li>
+              <li><a href="#">Diagramming</a></li>
+              <li><a href="#">Brainstorming</a></li>
+              <li><a href="#">Online whiteboard</a></li>
+              <li><a href="#">Team collaboration</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Explore</h4>
+            <ul>
+              <li><a href="#">Design</a></li>
+              <li><a href="#">Prototyping</a></li>
+              <li><a href="#">Development features</a></li>
+              <li><a href="#">Design systems</a></li>
+              <li><a href="#">Collaboration features</a></li>
+              <li><a href="#">Design process</a></li>
+              <li><a href="#">FigJam</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Best practices</a></li>
+              <li><a href="#">Colors</a></li>
+              <li><a href="#">Color wheel</a></li>
+              <li><a href="#">Support</a></li>
+              <li><a href="#">Developers</a></li>
+              <li><a href="#">Resource library</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="social-links">
+          <a href="#" class="social-link">𝕏</a>
+          <a href="#" class="social-link">📷</a>
+          <a href="#" class="social-link">📘</a>
+          <a href="#" class="social-link">💼</a>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>
